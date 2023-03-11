@@ -1,0 +1,25 @@
+{
+  "name": "mrbuggy-cypress",
+  "version": "1.0.0",
+  "description": "mrbuggy testy automatyczne cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+  },
+  "keywords": [
+    "cypress",
+    "testy",
+    "automatyczne",
+    "mrbuggy",
+    "2"
+  ],
+  "author": "Alicja Kowalska",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.4.1"
+  },
+  "dependencies": {
+    "jquery": "^3.6.3"
+  }
+}
