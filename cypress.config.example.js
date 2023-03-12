@@ -10,6 +10,10 @@ module.exports = defineConfig({
     "chromeWebSecurity": true,
     "viewportHeight": 1080,
     "viewportWidth": 1920,
+    env: {
+      app_username: 'username',
+      app_password: 'password',
+    },
 
 }
 });
