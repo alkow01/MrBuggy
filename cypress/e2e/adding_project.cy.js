@@ -8,20 +8,20 @@ const prefix = randomNumber()
 const randomPrefixName = `${prefix}`
 
 describe('"Adding a project/validation of form fields" test', () => {
-  beforeEach( () => {
-    cy.basicAuthLogin()
-    cy.login('bfp4fuser@axtonic.me', '72L7Eztv') 
-    cy.get('.header_admin').click()
-    cy.get('.button_link').eq(0).click().should('be.visible')
-    cy.url().should('include', '/add_project')
-  }) 
+    beforeEach( () => {
+      cy.basicAuthLogin()
+      cy.login('bfp4fuser@axtonic.me', '72L7Eztv')
+      cy.get('.header_admin').click()
+      cy.get('.button_link').eq(0).click().should('be.visible')
+      cy.url().should('include', '/add_project')
+    })
 
     it('Validation of adding project form - all fields are empty', () => {
       cy.get('form').submit();
       const requiredFieldNames = ['name', 'prefix'];
       cy.wrap(requiredFieldNames).each((requiredFieldName) => {
         cy.get('[name="' + requiredFieldName + '"]').then(($field) => {
-          cy.wrap($field).its('length').should('be.gt', 0, 'Element with name ' + requiredFieldName + ' exists.')
+          cy.wrap($field).its('length').should('be.gt', 0)
           const $nextElementAfterTheInput = $field.parent().find('.error_msg')
           cy.wrap($nextElementAfterTheInput).its('length').should('be.gt', 0)
           cy.wrap($nextElementAfterTheInput).contains('Pole wymagane')  
