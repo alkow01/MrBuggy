@@ -5,7 +5,7 @@ describe('Profile view test', () => {
         const $formLabels = ['Adres e-mail: ', 'Firma/Organizacja: ', 'Dział: ', 'Nr telefonu: ', 'Administrator: ']
 
         cy.basicAuthLogin()
-        cy.login('bdb31@waitloek.fun', 'EX7fO2x8')
+        cy.login(Cypress.env('active_user_username'), Cypress.env('active_user_password'))
         cy.get('.avatar_header').eq(0).click().should('be.visible')
         cy.url().should('include', '/profil')
         cy.go('back')
@@ -35,7 +35,7 @@ describe('Profile view test', () => {
         cy.url().should('include', '/project_view/1227')
         cy.go('back')
         cy.get('[href="http://demo-sii.mrbuggy2.testarena.pl/wyloguj"]').click().should("be.visible")
-        cy.login('bfp4fuser@axtonic.me', '72L7Eztv')
+        cy.login(Cypress.env('admin_user_username'), Cypress.env('admin_user_password'))
         cy.get('.avatar_header').eq(0).click()
         cy.url().should('include', '/profil')
         cy.get('.content_label').eq(4).should('contain', 'Tak')

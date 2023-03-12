@@ -6,7 +6,7 @@ describe('Login Test', () => {
     it('Successful login by providing correct e-mail and password', () => {
         cy.get('#email').should('be.visible')
         cy.get('#password').should('be.visible')
-        cy.login('bdb31@waitloek.fun', 'EX7fO2x8')
+        cy.login(Cypress.env('active_user_username'), Cypress.env('active_user_password'))
         cy.get("a").should("contain", 'Wyloguj')
     })
 
@@ -18,22 +18,21 @@ describe('Login Test', () => {
     })
 
     it('Fail login for provided incorrect e-mail and correct password', () => {
-        cy.login('test@test.pl', 'EX7fO2x8')
+        cy.login('test@test.pl', Cypress.env('active_user_password'))
         cy.get('div.login_form_error')
             .contains('Adres e-mail i/lub hasło są niepoprawne.')
             .should('be.visible')
     })
 
     it('Fail login for provided correct e-mail and incorrect password', () => {
-        cy.login('bdb31@waitloek.fun', 'test1')
+        cy.login(Cypress.env('active_user_username'), 'test1')
         cy.get('div.login_form_error')
             .contains('Adres e-mail i/lub hasło są niepoprawne.')
             .should('be.visible')
     })
 
     it('Fail login for provided incorrect e-mail and empty field for password', () => {
-        cy.login('bdb31@waitloek.fun')
-        cy.get('input#login').click()
+        cy.login('bdb31@waitloek.fun', '')
         cy.get('div.login_form_error')
             .contains('Adres e-mail i/lub hasło są niepoprawne.')
             .should('be.visible')
@@ -41,7 +40,7 @@ describe('Login Test', () => {
     })
 
     it('Fail login for provided correct password and empty field for e-mail', () => {
-        cy.login('', 'EX7fO2x8')
+        cy.login('', Cypress.env('active_user_password'))
         cy.get('div.login_form_error')
             .contains('Adres e-mail i/lub hasło są niepoprawne.')
             .should('be.visible')
