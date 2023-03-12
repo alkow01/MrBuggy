@@ -3,7 +3,6 @@ import $ from "jquery"
 const randomNumber = () => Cypress._.random(0, 1e6)
 const randomName = randomNumber()
 
-
 describe('Adding/checking the project test', () => {
     it('Adding new project', () => {
         cy.basicAuthLogin()
