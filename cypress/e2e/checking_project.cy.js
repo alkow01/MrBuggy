@@ -17,10 +17,7 @@ describe('Adding/checking the project test', () => {
         cy.get('.token-input-dropdown-item2-facebook.token-input-selected-dropdown-item-facebook').click({force: true})
         cy.get('#description').type('Test decription')
         cy.get('#save').click()
-    })
-
-    it('Login as active user and checking assigned project', () => {
-        cy.basicAuthLogin()
+        cy.get('[href="http://demo-sii.mrbuggy2.testarena.pl/wyloguj"]').click()
         cy.login(Cypress.env('active_user_username'), Cypress.env('active_user_password'))
         cy.get('[href="http://demo-sii.mrbuggy2.testarena.pl/profil"]').eq(1).click()
         cy.fixture('roles').then((roles) => {
@@ -29,6 +26,6 @@ describe('Adding/checking the project test', () => {
         cy.contains('td', randomName).parent().within($tr => {
             cy.get('td a').contains(randomName).should('have.text', randomName)
         })
-    })    
+    })
 })
 
