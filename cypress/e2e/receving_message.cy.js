@@ -13,7 +13,7 @@ describe('Sending a message/checking the received message on the active user/s a
         cy.get('.item8').click()
         cy.get('a.button_link').click()
         cy.url().should('include', '/wyslij_wiadomosc')
-        cy.get('#userName').type(`${'adminka23232@net.pl'}{downArrow}`)
+        cy.get('#userName').type(`${'bfp4fuser@axtonic.me'}{downArrow}`)
         cy.get('li.ui-menu-item').invoke('show').click()
         cy.get('#subject').type(randomSubjectField)
         cy.get('.ckeditor').type(randomContentField)
@@ -25,7 +25,7 @@ describe('Sending a message/checking the received message on the active user/s a
         cy.basicAuthLogin()
         cy.login('bfp4fuser@axtonic.me', 'N72L7Eztv')
         cy.get('.PanelList').eq(0).find('ul li').first().then(($li) => {
-            cy.wrap($li).find('div.author').should('contain', 'Kaja Kajowska')
+            cy.wrap($li).find('div.author').should('contain', 'Matthew Webster')
             cy.wrap($li).find('div.snippet.preview').find('span strong').should('contain', randomSubjectField)
         })    
     })

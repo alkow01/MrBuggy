@@ -52,12 +52,12 @@ describe('Sending a message to the user - test', () =>{
 
     it('Validation of message form - all fields are empty', () => {
       cy.get('form').eq(1).submit();
-      const requiredFieldNames = ['userName', 'subject', 'content'];
+      const requiredFieldNames = ['userName', 'subject', 'content']
       cy.wrap(requiredFieldNames).each((requiredFieldName) => {
       cy.get('[for="' + requiredFieldName + '"]').then(($field) => {
-        cy.wrap($field).its('length').should('be.gt', 0);
-          const $nextElementAfterTheInput = $field.parent().parent().find('.error_msg');
-          cy.wrap($nextElementAfterTheInput).its('length').should('be.gt', 0);
+        cy.wrap($field).its('length').should('be.gt', 0)
+          const $nextElementAfterTheInput = $field.parent().parent().find('.error_msg')
+          cy.wrap($nextElementAfterTheInput).its('length').should('be.gt', 0)
           cy.wrap($nextElementAfterTheInput).contains('Pole wymagane').should('have.text', 'Pole wymagane')
         })
       })
