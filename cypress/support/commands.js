@@ -24,19 +24,21 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 Cypress.Commands.add('basicAuthLogin', () => {
-    cy.visit('/',  {
+    const username = Cypress.env('app_username');
+    const password = Cypress.env('app_password');
+    cy.visit('/', {
         auth: {
-            Cypress.env('app_username'), Cypress.env('app_password'),
+            username, password
         },
-      }) 
-})  
+    })
+})
 Cypress.Commands.add('login', (username, password) => {
     if (username) {
         cy.get('#email').type(username)
     }
 
     if (password) {
-        cy.get('#password').type(password, { log: false })
+        cy.get('#password').type(password, {log: false})
     }
 
     cy.get('#login').click()
