@@ -17,8 +17,14 @@ Automation tests in Cypress for test functionality in MrBuggy 2 app
 		3. It is worth writing tests that are repeatable and independent of each other.
 		4. It is worth to write tests that are flexible and easy to configure. For this purpose, it is worth using variables and configuration files that allow you to 		adapt tests to different environments and scenarios.
 		5. It is worth writing tests that comply with the principles of TDD (Test Driven Development) and BDD (Behavior Driven Development). This approach means that 		tests are written before the application code and allows for faster detection of errors and defects.
+		
+## 3. Improvements 
+
+      1. Due to limitations in the application code, selectors were referenced in test scripts in a way that was inconsistent with best practices, according to which the use of data-* attributes isolates the selectors from changes in CSS or JS.
+      2. All random number generators should be moved to the command file in the support folder so as not to repeat the code
+
 	
-## 3. About me
+## 4. About me
 	
       Experienced chemist associated with quality control. I want to transfer my knowledge to the IT industry. 
       Software testing and sample testing/analyzing have many connections. 
