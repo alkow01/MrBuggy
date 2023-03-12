@@ -1,7 +1,7 @@
 import $ from "jquery"
 
 describe('Profile view test', () => {
-    it('Correct display of user data in profile view', () => {
+    it('Correct display user data in the profile view', () => {
         const $formLabels = ['Adres e-mail: ', 'Firma/Organizacja: ', 'Dział: ', 'Nr telefonu: ', 'Administrator: ']
 
         cy.basicAuthLogin()
