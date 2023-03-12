@@ -2,6 +2,8 @@ import $ from "jquery"
 
 describe('Profile view test', () => {
     it('Correct display of user data in profile view', () => {
+        const $formLabels = ['Adres e-mail: ', 'Firma/Organizacja: ', 'Dział: ', 'Nr telefonu: ', 'Administrator: ']
+
         cy.basicAuthLogin()
         cy.login('bdb31@waitloek.fun', 'EX7fO2x8')
         cy.get('.avatar_header').eq(0).click().should('be.visible')
@@ -9,13 +11,12 @@ describe('Profile view test', () => {
         cy.go('back')
         cy.get('[href="http://demo-sii.mrbuggy2.testarena.pl/profil"]').eq(1).click().should('be.visible')
         cy.url().should('include', '/profil')
-        const $expectedText = ['Adres e-mail: ', 'Firma/Organizacja: ', 'Dział: ', 'Nr telefonu: ', 'Administrator: ']
         cy.get('.contentProperties_left').within(() => {
-            cy.get('.textLabelPropertiesDiv').first().nextAll().each(($div) => {
-                const $stala = $div.find('.textLabelEditor_text')
-                cy.wrap($stala).invoke('text').then(($text) =>{
-                    expect($expectedText).to.include($text)
-                })   
+            cy.get('.textLabelPropertiesDiv').first().nextAll().each(($element) => {
+                const $elementTextHolder = $element.find('.textLabelEditor_text')
+                cy.wrap($elementTextHolder).invoke('text').then(($label) =>{
+                    expect($formLabels).to.include($label)
+                })
             })
         })
         cy.get('.content_label').eq(4).should('contain', 'Nie')

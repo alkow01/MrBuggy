@@ -39,9 +39,9 @@ describe('"Adding a project/validation of form fields" test', () => {
         cy.get('#description').type('text content')
         cy.get('#save').click().should('be.visible')
         cy.get('#name').then(($name) => {
-          const NameErrorMsg = $name.parent().find('.error_msg')
-          cy.wrap(NameErrorMsg).its('length').should('be.gt', 0)
-          cy.wrap(NameErrorMsg).contains('Pole wymagane').should('have.text', 'Pole wymagane')
+          const nameErrorMsg = $name.parent().find('.error_msg')
+          cy.wrap(nameErrorMsg).its('length').should('be.gt', 0)
+          cy.wrap(nameErrorMsg).contains('Pole wymagane').should('have.text', 'Pole wymagane')
         })
       }) 
 
@@ -55,9 +55,9 @@ describe('"Adding a project/validation of form fields" test', () => {
         cy.get('#description').type('text content')
         cy.get('#save').click() 
         cy.get('#prefix').then(($prefix) => {
-          const PrefixErrorMsg = $prefix.parent().find('.error_msg')
-          cy.wrap(PrefixErrorMsg).its('length').should('be.gt', 0)
-          cy.wrap(PrefixErrorMsg).contains('Pole wymagane').should('have.text', 'Pole wymagane')
+          const prefixErrorMsg = $prefix.parent().find('.error_msg')
+          cy.wrap(prefixErrorMsg).its('length').should('be.gt', 0)
+          cy.wrap(prefixErrorMsg).contains('Pole wymagane').should('have.text', 'Pole wymagane')
         })
       }) 
 
